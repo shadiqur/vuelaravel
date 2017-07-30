@@ -23,8 +23,12 @@ Route::get('message',function(){
 });
 
 Route::post('meg',function(Request $request){
-
-    return view('home');
+   // $input = $request->all();
+   // DB::table('tolist')->insert($input);
+    //$name = $request->input('fname');
+    $data = $request->json()->all();
+    //return view('home');
+    return   $data;
 });
 Route::get('homepage',function(){
 

@@ -5,13 +5,28 @@
         <input type="text" v-model="todo.phone" placeholder="Phone">
         <input type="text" v-model="todo.address" placeholder="Address">
         <button @click="AlertName">click me</button>
-        <!--<button @click="addone">add me</button>-->
+        <button @click="save">Save</button>
         <!--<button @click="deleteme">delete me</button>-->
-        <ol>
-        <li v-for="todos in todoall" v-text="todos"  >
+
+        <table border="1">
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+            <tr v-for="todos in todoall">
+                <td>{{todos.fname}}</td>
+                <td>{{todos.lname}}</td>
+                <td>{{todos.phone}}</td>
+                <td>{{todos.address}}</td>
+            </tr>
+        </table>
+        <!--<ol>-->
+        <!--<li v-for="todos in todoall"   >-->
         <!--{{todos.fname}}-->
-        </li>
-        </ol>
+        <!--</li>-->
+        <!--</ol>-->
     </div>
 </template>
 
@@ -32,7 +47,7 @@
         methods: {
             AlertName: function () {
                 this.todoall.push(this.todo) ;
-                console.log(this.todoall.data);
+
                 this.todo={
                     fname:'',
                     lname:'',
@@ -58,24 +73,25 @@
 //                        console.log(error);
 //                    });
 
-            }
+            },
 
-//          addone:function () {
-//              var self = this;
-////                this.todos.push('OMG');
-//                    console.log(self.name);
-////              axios.post('meg', self.name, {headers: {
-////                  'Content-type': 'application/x-www-form-urlencoded',
-////              }}).then(r => console.log('r: ', JSON.stringify(r, null, 2)));
-////
-////              this.fetchComment('meg');
+          save:function () {
+              var self = this;
+//                this.todos.push('OMG');
 //
-//              axios.post('meg', self.name).then(function (response) {
-//                  window.location = 'homepage';
-//              });
-//              //this.submitted = true;
+//              axios.post('meg', self.name, {headers: {
+//                  'Content-type': 'application/x-www-form-urlencoded',
+//              }}).then(r => console.log('r: ', JSON.stringify(r, null, 2)));
 //
-//          },
+//              this.fetchComment('meg');
+
+              axios.post('meg', self.todoall).then(function (response) {
+                  //window.location = 'homepage';
+                  console.log(response.data);
+              });
+              //this.submitted = true;
+
+          },
 //          deleteme:function () {
 //              this.todos.pop();
 //          }

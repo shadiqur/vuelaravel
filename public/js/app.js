@@ -41943,6 +41943,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -41960,7 +41975,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         AlertName: function AlertName() {
             this.todoall.push(this.todo);
-            console.log(this.todoall.data);
+
             this.todo = {
                 fname: '',
                 lname: '',
@@ -41986,24 +42001,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //                    });
 
             };
-        }
+        },
 
-        //          addone:function () {
-        //              var self = this;
-        ////                this.todos.push('OMG');
-        //                    console.log(self.name);
-        ////              axios.post('meg', self.name, {headers: {
-        ////                  'Content-type': 'application/x-www-form-urlencoded',
-        ////              }}).then(r => console.log('r: ', JSON.stringify(r, null, 2)));
-        ////
-        ////              this.fetchComment('meg');
-        //
-        //              axios.post('meg', self.name).then(function (response) {
-        //                  window.location = 'homepage';
-        //              });
-        //              //this.submitted = true;
-        //
-        //          },
+        save: function save() {
+            var self = this;
+            //                this.todos.push('OMG');
+            //
+            //              axios.post('meg', self.name, {headers: {
+            //                  'Content-type': 'application/x-www-form-urlencoded',
+            //              }}).then(r => console.log('r: ', JSON.stringify(r, null, 2)));
+            //
+            //              this.fetchComment('meg');
+
+            axios.post('meg', self.todoall).then(function (response) {
+                //window.location = 'homepage';
+                console.log(response.data);
+            });
+            //this.submitted = true;
+        }
         //          deleteme:function () {
         //              this.todos.pop();
         //          }
@@ -42104,14 +42119,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.AlertName
     }
-  }, [_vm._v("click me")]), _vm._v(" "), _c('ol', _vm._l((_vm.todoall), function(todos) {
-    return _c('li', {
-      domProps: {
-        "textContent": _vm._s(todos)
-      }
-    })
-  }))])
-},staticRenderFns: []}
+  }, [_vm._v("click me")]), _vm._v(" "), _c('button', {
+    on: {
+      "click": _vm.save
+    }
+  }, [_vm._v("Save")]), _vm._v(" "), _c('table', {
+    attrs: {
+      "border": "1"
+    }
+  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.todoall), function(todos) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(todos.fname))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(todos.lname))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(todos.phone))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(todos.address))])])
+  })], 2)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('th', [_vm._v("Firstname")]), _vm._v(" "), _c('th', [_vm._v("Lastname")]), _vm._v(" "), _c('th', [_vm._v("Phone")]), _vm._v(" "), _c('th', [_vm._v("Address")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
